@@ -1,17 +1,16 @@
 <?php
-function cptui_register_my_cpts_api_transaction() {
+/**
+ * Post Type: API Transactions.
+ */
 
-	/**
-	 * Post Type: API Transactions.
-	 */
-
+function mna_register_api_transaction() {
 	$labels = [
-		"name" => __( "API Transactions", "lafka-child" ),
-		"singular_name" => __( "Transaction", "lafka-child" ),
+		"name" => __( "API Transactions", "meat-night-api" ),
+		"singular_name" => __( "Transaction", "meat-night-api" ),
 	];
 
 	$args = [
-		"label" => __( "API Transactions", "lafka-child" ),
+		"label" => __( "API Transactions", "meat-night-api" ),
 		"labels" => $labels,
 		"description" => "",
 		"public" => true,
@@ -36,20 +35,21 @@ function cptui_register_my_cpts_api_transaction() {
 	register_post_type( "api_transaction", $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts_api_transaction' );
-function cptui_register_my_taxes_transaction_type() {
+add_action( 'init', 'mna_register_api_transaction' );
 
-	/**
-	 * Taxonomy: Return Types.
-	 */
 
+
+/**
+ * Taxonomy: Return Types.
+ */
+function mna_register_my_taxes_transaction_type() {
 	$labels = [
-		"name" => __( "Return Types", "lafka-child" ),
-		"singular_name" => __( "Return Type", "lafka-child" ),
+		"name" => __( "Return Types", "meat-night-api" ),
+		"singular_name" => __( "Return Type", "meat-night-api" ),
 	];
 
 	$args = [
-		"label" => __( "Return Types", "lafka-child" ),
+		"label" => __( "Return Types", "meat-night-api" ),
 		"labels" => $labels,
 		"public" => true,
 		"publicly_queryable" => true,
@@ -67,4 +67,4 @@ function cptui_register_my_taxes_transaction_type() {
 	];
 	register_taxonomy( "transaction_type", [ "api_transaction" ], $args );
 }
-add_action( 'init', 'cptui_register_my_taxes_transaction_type' );
+add_action( 'init', 'mna_register_my_taxes_transaction_type' );
