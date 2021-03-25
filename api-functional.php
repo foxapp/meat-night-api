@@ -1,5 +1,4 @@
 <?php
-add_action('woocommerce_thankyou', 'mna_send_to_api_order_details', 3, 1);
 function mna_send_to_api_order_details( $order_id ) {
 	if ( ! $order_id )
 		return;
@@ -372,6 +371,11 @@ function mna_send_to_api_order_details( $order_id ) {
 
 		// API URL
 		//if(!isset($_GET['debug']) ) {
+
+		include_once __DIR__ .'/adapter/Beecomm.php';
+		$client_id = '';
+		$client_secret = '';
+		$beecommApi = new BeecommApi("example.com", "XXXXXXXX");
 		$url = 'http://2order.org/api/restgenord/SaveOrder';
 		//$postdata = json_encode($data, JSON_UNESCAPED_UNICODE);
 		$payload = json_encode( $data, JSON_UNESCAPED_UNICODE );
